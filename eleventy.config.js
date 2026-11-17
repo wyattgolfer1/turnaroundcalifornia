@@ -8,6 +8,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/images");
 
+  // Posts marked Draft are skipped entirely: not built, not listed, not in the feed
+  eleventyConfig.addPreprocessor("drafts", "md", (data) => {
+    if (data.draft === true) return false;
+  });
+
   // All posts, newest first (drafts hidden)
   eleventyConfig.addCollection("posts", (api) =>
     api
