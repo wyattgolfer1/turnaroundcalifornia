@@ -1,0 +1,15 @@
+---
+layout: base.njk
+title: All posts
+permalink: /posts/
+---
+<section class="wrap page-head">
+  <div class="section-head"><h1 style="margin:0; font-size: clamp(30px, 4vw, 40px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em">All posts</h1></div>
+  {% if collections.posts.length %}
+  <ul class="post-list">
+    {% for post in collections.posts %}{% include "post-row.njk" %}{% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty-note">No posts yet. Check back soon.</p>
+  {% endif %}
+</section>

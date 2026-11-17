@@ -1,0 +1,15 @@
+<section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+  <div class="inner">
+    <h2 id="newsletter-title">Get the Turnaround in your inbox</h2>
+    <p>New posts on California news and politics, sent straight to you. No spam, unsubscribe anytime.</p>
+    {% if site.newsletter_form_action %}
+    <form class="signup" action="{{ site.newsletter_form_action }}" method="post" target="_blank">
+      <label class="visually-hidden" for="nl-email">Email address</label>
+      <input id="nl-email" type="email" name="{{ site.newsletter_email_field }}" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    {% else %}
+    <p class="signup-soon">Newsletter signup is coming soon.</p>
+    {% endif %}
+  </div>
+</section>

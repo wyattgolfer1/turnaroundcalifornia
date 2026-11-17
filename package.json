@@ -1,0 +1,15 @@
+{
+  "name": "turnaround-california",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turnaround California — news and politics website",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@11ty/eleventy-plugin-rss": "^2.0.4"
+  }
+}

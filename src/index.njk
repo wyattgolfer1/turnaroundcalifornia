@@ -1,0 +1,36 @@
+---
+layout: base.njk
+isHome: true
+---
+{% set latest = collections.posts[0] %}
+{% if latest %}
+<section class="wrap lead" aria-label="Latest post">
+  <article class="{% if not latest.data.image %}no-image{% endif %}">
+    {% if latest.data.image %}
+    <a class="lead-image" href="{{ latest.url }}" tabindex="-1" aria-hidden="true"><img src="{{ latest.data.image }}" alt=""></a>
+    {% endif %}
+    <div class="lead-text">
+      <div class="new"><span class="pill">Latest</span>{% if latest.data.category %}<span class="label">{{ latest.data.category }}</span>{% endif %}</div>
+      <h1><a href="{{ latest.url }}">{{ latest.data.title }}</a></h1>
+      {% if latest.data.summary %}<p class="summary">{{ latest.data.summary }}</p>{% endif %}
+      <span class="meta">By {{ author.name }} · <time datetime="{{ latest.date | isoDate }}">{{ latest.date | longDate }}</time> · {{ latest.content | readingTime }}</span>
+      <a class="read-more" href="{{ latest.url }}">Read the full post →</a>
+    </div>
+  </article>
+</section>
+{% endif %}
+
+<section class="wrap earlier" aria-labelledby="earlier-title">
+  <div class="section-head">
+    <h2 id="earlier-title">Earlier posts</h2>
+    {% if collections.posts.length > 7 %}<a href="/posts/">All posts →</a>{% endif %}
+  </div>
+  {% set rest = collections.posts | skip(1) | limit(6) %}
+  {% if rest.length %}
+  <ul class="post-list">
+    {% for post in rest %}{% include "post-row.njk" %}{% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty-note">More posts are on the way. Subscribe below to get them as soon as they’re up.</p>
+  {% endif %}
+</section>

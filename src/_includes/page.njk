@@ -1,0 +1,10 @@
+---
+layout: base.njk
+---
+<header class="narrow page-head">
+  <span class="label">{{ title }}</span>
+  <h1>{{ heading or title }}</h1>
+</header>
+<div class="prose">
+  {{ content | safe }}
+</div>

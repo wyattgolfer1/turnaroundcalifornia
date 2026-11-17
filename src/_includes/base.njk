@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set pageTitle = (title + " — " + site.title) if title and not isHome else (site.title + " — " + site.tagline) %}
+  {% set pageDesc = summary or site.description %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
+  <meta property="og:image" content="{{ site.url }}{{ image or '/images/logo.png' }}">
+  <meta name="twitter:card" content="{{ 'summary_large_image' if image else 'summary' }}">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% if isHome %}
+  <div class="utility">
+    <div class="wrap">
+      <span class="tag">Independent news &amp; politics from across the Golden State</span>
+      <div class="links">
+        <a href="/about/">About</a>
+        <a class="btn-gold" href="#newsletter">Subscribe</a>
+      </div>
+    </div>
+  </div>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img src="/images/logo.png" alt="Turnaround California logo" width="128" height="128">
+        <span class="wordmark">
+          <span class="big">Turnaround</span>
+          <span class="small"><span class="rule"></span><span class="word">California</span><span class="rule"></span></span>
+        </span>
+      </a>
+      <p class="tagline">{{ site.tagline }}</p>
+    </div>
+  </header>
+  <nav class="site-nav" aria-label="Main">
+    <ul>
+      <li><a href="/posts/">Posts</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+  {% else %}
+  <header class="compact-header">
+    <div class="wrap">
+      <a class="compact-brand" href="/">
+        <img src="/images/logo.png" alt="" width="56" height="56">
+        <span>Turnaround <em>California</em></span>
+      </a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/posts/" {% if page.url.startsWith('/posts/') %}aria-current="page"{% endif %}>Posts</a></li>
+          <li><a href="/about/" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a></li>
+          <li><a class="btn-dark" href="#newsletter">Subscribe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  {% endif %}
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  {% include "newsletter.njk" %}
+
+  <footer class="site-footer">
+    <div class="wrap top">
+      <div class="about">
+        <img src="/images/logo.png" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <strong>Turnaround <em>California</em></strong>
+          <span>{{ site.description }}</span>
+        </div>
+      </div>
+      <ul>
+        <li><a href="/posts/">Posts</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+        {% if site.social.instagram %}<li><a href="{{ site.social.instagram }}">Instagram</a></li>{% endif %}
+        {% if site.social.x %}<li><a href="{{ site.social.x }}">X</a></li>{% endif %}
+        {% if site.social.youtube %}<li><a href="{{ site.social.youtube }}">YouTube</a></li>{% endif %}
+        {% if site.social.tiktok %}<li><a href="{{ site.social.tiktok }}">TikTok</a></li>{% endif %}
+      </ul>
+    </div>
+    <div class="wrap bottom">© {{ build.year }} Turnaround California</div>
+  </footer>
+</body>
+</html>

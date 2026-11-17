@@ -1,0 +1,139 @@
+# Pages CMS configuration — this is what makes the post editor at app.pagescms.org work.
+media:
+  input: src/images/uploads
+  output: /images/uploads
+  rename: safe
+  categories: [image]
+
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: src/posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, date, category, draft]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Headline
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: category
+        label: Label (optional, e.g. Elections, Housing, Opinion)
+        type: string
+      - name: summary
+        label: Summary (one or two sentences, shown on the homepage)
+        type: text
+      - name: image
+        label: Featured photo (optional)
+        type: image
+      - name: image_alt
+        label: Photo description (for screen readers)
+        type: string
+      - name: image_caption
+        label: Photo caption and credit
+        type: string
+      - name: quick_take
+        label: Quick take (optional key points box)
+        type: string
+        list: true
+      - name: draft
+        label: Draft (hide from the site)
+        type: boolean
+        default: false
+      - name: body
+        label: Story
+        type: rich-text
+
+  - name: about
+    label: About page
+    type: file
+    path: src/about.md
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+        default: page.njk
+      - name: permalink
+        type: string
+        hidden: true
+        default: /about/
+      - name: title
+        label: Menu label
+        type: string
+        default: About
+      - name: heading
+        label: Page heading
+        type: string
+      - name: summary
+        label: Short description (for search engines and link previews)
+        type: string
+      - name: body
+        label: Page text
+        type: rich-text
+
+  - name: author
+    label: Your byline & bio
+    type: file
+    path: src/_data/author.json
+    format: json
+    fields:
+      - name: name
+        label: Your name
+        type: string
+      - name: bio
+        label: Short bio (shown under every post)
+        type: text
+      - name: photo
+        label: Your photo (optional)
+        type: image
+
+  - name: site
+    label: Site settings
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: title
+        label: Site name
+        type: string
+      - name: tagline
+        label: Tagline (under the logo)
+        type: string
+      - name: description
+        label: Site description (footer, search engines)
+        type: text
+      - name: url
+        label: Your web address (e.g. https://turnaroundcalifornia.com)
+        type: string
+      - name: author
+        label: Publisher name (for the RSS feed)
+        type: string
+      - name: newsletter_form_action
+        label: Newsletter form address (from your newsletter service)
+        type: string
+      - name: newsletter_email_field
+        label: Newsletter email field name (usually "email")
+        type: string
+      - name: social
+        label: Social links (leave blank to hide)
+        type: object
+        fields:
+          - name: instagram
+            type: string
+          - name: x
+            label: X (Twitter)
+            type: string
+          - name: youtube
+            label: YouTube
+            type: string
+          - name: tiktok
+            label: TikTok
+            type: string

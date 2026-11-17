@@ -1,0 +1,64 @@
+---
+layout: base.njk
+---
+<article>
+  <header class="narrow article-head">
+    {% if category %}<span class="label">{{ category }}</span>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if summary %}<p class="dek">{{ summary }}</p>{% endif %}
+    <div class="byline">
+      <div class="who">
+        <strong>By {{ author.name }}</strong>
+        <span class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | longDate }}</time> · {{ content | readingTime }}</span>
+      </div>
+      <div class="share">
+        <a href="https://twitter.com/intent/tweet?url={{ (site.url + page.url) | urlencode }}&text={{ title | urlencode }}" target="_blank" rel="noopener" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/></svg>
+        </a>
+        <button type="button" aria-label="Copy link" onclick="navigator.clipboard.writeText(location.href).then(()=>{this.nextElementSibling.hidden=false;setTimeout(()=>this.nextElementSibling.hidden=true,2000)})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+        </button>
+        <span class="copied" role="status" hidden>Link copied</span>
+      </div>
+    </div>
+  </header>
+
+  {% if image %}
+  <figure class="feature">
+    <img src="{{ image }}" alt="{{ image_alt }}">
+    {% if image_caption %}<figcaption>{{ image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="prose">
+    {% if quick_take and quick_take.length %}
+    <aside class="quick-take" aria-label="The quick take">
+      <h2>The quick take</h2>
+      <ul>{% for point in quick_take %}<li>{{ point }}</li>{% endfor %}</ul>
+    </aside>
+    {% endif %}
+    {{ content | safe }}
+  </div>
+
+  <div class="author-box">
+    <div class="box">
+      {% if author.photo %}<img src="{{ author.photo }}" alt="" width="64" height="64">{% endif %}
+      <div>
+        <strong>{{ author.name }}</strong>
+        <p>{{ author.bio }}</p>
+      </div>
+    </div>
+  </div>
+
+  {% set older = collections.posts | getNextCollectionItem(page) %}
+  {% set newer = collections.posts | getPreviousCollectionItem(page) %}
+  {% if older or newer %}
+  <nav class="post-nav" aria-label="More posts">
+    {% if older %}<a href="{{ older.url }}"><span>← Older</span>{{ older.data.title }}</a>{% endif %}
+    {% if newer %}<a class="next" href="{{ newer.url }}"><span>Newer →</span>{{ newer.data.title }}</a>{% endif %}
+  </nav>
+  {% endif %}
+</article>
