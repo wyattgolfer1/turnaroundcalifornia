@@ -5,7 +5,7 @@ summary: I love this state. I'm also worried about whether people like us can ke
 image: ""
 image_alt: ""
 image_caption: ""
-draft: true
+draft: false
 ---
 California is considered one of the most expensive states to live in, and plenty of people have had enough. Since 2020, hundreds of thousands more people have left the state than moved here, [nearly 700,000](https://www.stripes.com/theaters/us/2023-02-15/california-population-decrease-500k-2-years-9148809.html) in just the first two years of the pandemic. A lot of Californians are finally asking themselves if they can still afford to stay. Honestly, I've been asking myself the same thing.
 
