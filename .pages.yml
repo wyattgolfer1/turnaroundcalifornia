@@ -87,6 +87,9 @@ content:
       - name: linkedin
         label: LinkedIn profile link (full address, starting with https://)
         type: string
+      - name: instagram
+        label: Instagram link (full address, starting with https://)
+        type: string
       - name: email
         label: Contact email (shown publicly)
         type: string

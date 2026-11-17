@@ -8,6 +8,7 @@ name: Wyatt Wens
 role: Founder & Editor
 photo: /images/uploads/about-photo.jpg
 linkedin: https://www.linkedin.com/in/wyattwens
+instagram: https://www.instagram.com/turnaroundcalifornia/
 email: wyattjwens@gmail.com
 ---
 Hey everyone, I'm Wyatt Wens, the founder and editor of Turnaround California, a small, nonpartisan news site dedicated to California news and politics.
