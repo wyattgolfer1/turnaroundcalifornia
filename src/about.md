@@ -7,6 +7,7 @@ summary: Meet Wyatt Wens, founder and editor of Turnaround California, a small, 
 name: Wyatt Wens
 role: Founder & Editor
 photo: /images/uploads/about-photo.jpg
+photo_caption: Outside the California State Capitol in Sacramento.
 linkedin: https://www.linkedin.com/in/wyattwens
 email: wyattjwens@gmail.com
 ---

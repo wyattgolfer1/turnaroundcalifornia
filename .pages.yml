@@ -78,6 +78,9 @@ content:
       - name: photo
         label: Your photo
         type: image
+      - name: photo_caption
+        label: Photo caption
+        type: string
       - name: name
         label: Your name
         type: string
