@@ -6,7 +6,7 @@ permalink: /about/
 summary: About Turnaround California.
 name: ""
 role: ""
-photo: ""
+photo: /images/uploads/about-photo.jpg
 linkedin: ""
 email: ""
 ---
