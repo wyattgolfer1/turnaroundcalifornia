@@ -60,7 +60,7 @@ content:
       - name: layout
         type: string
         hidden: true
-        default: page.njk
+        default: about.njk
       - name: permalink
         type: string
         hidden: true
@@ -75,8 +75,23 @@ content:
       - name: summary
         label: Short description (for search engines and link previews)
         type: string
+      - name: photo
+        label: Your photo
+        type: image
+      - name: name
+        label: Your name
+        type: string
+      - name: role
+        label: Your title (e.g. Founder & Editor)
+        type: string
+      - name: linkedin
+        label: LinkedIn profile link (full address, starting with https://)
+        type: string
+      - name: email
+        label: Contact email (shown publicly)
+        type: string
       - name: body
-        label: Page text
+        label: Page text (your introduction)
         type: rich-text
 
   - name: author

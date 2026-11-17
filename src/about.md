@@ -1,9 +1,14 @@
 ---
-layout: page.njk
+layout: about.njk
 title: About
 heading: About Turnaround California
 permalink: /about/
 summary: About Turnaround California.
+name: ""
+role: ""
+photo: ""
+linkedin: ""
+email: ""
 ---
 Turnaround California covers the news and politics shaping the Golden State, explained plainly, so you can make up your own mind.
 
