@@ -1,7 +1,6 @@
 ---
 title: "California: Stay or Go?"
 date: 2026-11-17
-category: Perspective
 summary: I love this state. I'm also worried about whether people like us can keep affording it.
 image: ""
 image_alt: ""
